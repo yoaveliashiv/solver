@@ -11,16 +11,13 @@ using namespace std;
 namespace solver {
     double solve(double x);
 
-        class RealVariable {
+        class RealVariable {//מספר ממשי
 
         private:
-//        char sign_x;
-//        char sign_x_2;
-//        double x, xx;
-        double a=0, b=0, c=0;
+        double a=0, b=0, c=0;//2+3x +x^2 a=1 b=3 c=2
 
     public:
-        RealVariable() : a(0), b(1), c(0) {}
+        RealVariable() : a(0), b(1), c(0) {}//בנאי דיפולטיבי רשימת אתחול
 
         RealVariable(double a, double b, double c) {
             this->a = a;
@@ -28,8 +25,8 @@ namespace solver {
             this->c = c;
 
         }
-
-       friend ostream &operator<<(ostream &os, const RealVariable &r);
+//const קבוע
+       friend ostream &operator<<(ostream &os, const RealVariable &r);// הדפסה_דורסים את הסימון>> וזרם פלט
 
         friend RealVariable operator+(double a, RealVariable x);
 
@@ -64,12 +61,12 @@ namespace solver {
     };
 
 
-    class ComplexVariable{
+    class ComplexVariable{ //מספרים מורכבים
         private:
-            int power=0;
-            std::complex<double> com;
-            std::complex<double> com_y;
-            double f;
+            int power=0;//(2+3i)^2
+            std::complex<double> com;//רק מקדם של איקס עם מספ מורכב
+            std::complex<double> com_y;//כולל האיקס
+            double f;//המספר חופשי
             int image=0;
 
         public:
@@ -87,7 +84,6 @@ namespace solver {
             friend ComplexVariable operator/(ComplexVariable c1,  double a);
             friend ComplexVariable operator-( ComplexVariable c,double a);
             friend ComplexVariable operator-( ComplexVariable c1,ComplexVariable c2);
-//            friend ComplexVariable operator-( double a,double b);
             friend std::complex<double> operator==( ComplexVariable c,double a);
             friend  std::complex<double> operator==( ComplexVariable c1,ComplexVariable c2);
             friend ComplexVariable operator^( ComplexVariable c,double n);
