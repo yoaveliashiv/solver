@@ -137,16 +137,12 @@ namespace solver{
         }
     }
      ComplexVariable operator*(double a,  ComplexVariable c){
-         //y
-//         if(c.com.real()==1){
-//             c.com_y.real(a*c.com.real());
-//             c.com_y.imag(a*c.com.imag());
-//         }
+        
         if((a==6 || a==2)&&(c.power>0)){
             c.com.real(c.com.real()*a);
             return c;
         }
-        //y^2
+  
         c.com.real(a*c.com.real());
         c.com.imag(a*c.com.imag());
 
@@ -194,10 +190,7 @@ c1.f+=a;
     }
 
 
-    /*    ComplexVariable operator-(double a,double b){
-
-
-    }*/
+ 
     std::complex<double> operator==( ComplexVariable c,double a){
         if(c.power>0){
         a=a-c.f;
