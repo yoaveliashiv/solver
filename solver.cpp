@@ -15,32 +15,7 @@ namespace solver{
         return r;
 
 
-//    if(r.sign_x=='x') {
-//        if (r.x == 0) {
-//            r.x = a;
-//        } else {
-//            r.x *= a;
-//        }
-//    } else{
-//
-//    }
     }
-//         RealVariable operator*(RealVariable x,double a){
-//             x.a=x.a*a;
-//             x.b=x.b*a;
-//             x.c=x.c*a;
-//             return x;
-//         }
-
-//         RealVariable operator*(RealVariable x1,RealVariable x2){
-//             RealVariable x3;
-//             if(x1.a!=0&&x2.a!=0||x1.a!=0&&x2.b!=0||x1.b!=0&&x2.a!=0)
-//                 throw invalid_argument("cant handle with power grater than 2");
-//            x3.a=;
-//             x3.b=;
-//             x3.c;
-//             return x3;
-//         }
 
     RealVariable operator+(RealVariable x,double a){
         x.c+=a;
@@ -58,18 +33,7 @@ namespace solver{
         return x3;
     }
 
-//    ostream& operator<<(ostream& os, const RealVariable& r)
-//    {
-//        if(r.a!=0 && r.b!=0 &&  r.c!=0) {
-//            if (r.b>0 && r.c>0) {
-//                os << r.a << "x^2" << "+"<<r.b<< "x"<<"+" << r.c;
-//                return os;
-//            }
-//            os << r.a << "x^2" <<r.b<< "x"<< r.c;
-//        } else{
-//
-//        }
-//    }
+
     RealVariable operator-(RealVariable x,double a){
         x.c=x.c-a;
         return x;
@@ -95,14 +59,11 @@ namespace solver{
         if(n == 0)
             throw invalid_argument("cant divide in zero");
         x.b/=n;
-        //x.c/=n;
+        x.c/=n;
+        x.a/=n;
         return x;
     }
 
-    RealVariable operator/(RealVariable x1,RealVariable x2) {
-
-
-    }
 
     double operator==(RealVariable x,double a){
         x.c=-1*x.c;
@@ -130,18 +91,8 @@ namespace solver{
 
 
     RealVariable operator== ( RealVariable left,  RealVariable right) {
-        return left - right;
+        return left - right;//מעביר לפונקציה של הפחות
     }
-
-//    RealVariable operator== (const double n, RealVariable& right) {
-//        return right - n;
-//
-//    }
-//
-//    RealVariable operator== (const RealVariable& left,  double n) {
-//        return left - n;
-//
-//    }
 
     RealVariable operator^(RealVariable r,double n){
         RealVariable ans;
@@ -169,16 +120,13 @@ namespace solver{
         return x;
 
     }
-    std::complex<double> solve (std::complex<double> a){
+    std::complex<double> solve (std::complex<double> a){//מספר מורכב של הספרייה
         return a;
     }
-    double solve(RealVariable r) {
+    double solve(RealVariable r) {// משווים עם אפס  והפונקציה אנס פותרתה
         return ans(r.a,r.b,r.c);
-
-
-
     }
-    extern  ostream& operator<<(ostream& os, const complex<float>& yvalue){
+     ostream& operator<<(ostream& os, const complex<float>& yvalue){
         if (yvalue.imag()>0) {
             os << yvalue.real() <<"+" <<yvalue.imag()<<"i" << endl;
             return os;
